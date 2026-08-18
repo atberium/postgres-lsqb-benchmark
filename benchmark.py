@@ -26,7 +26,6 @@ args_parser.add_argument("--db-host", type=str, default='localhost', help="Postg
 args_parser.add_argument("--db-port", type=int, default=5432, help="PostgresQL port")
 args_parser.add_argument("--db-user", type=str, default='postgres', help="PostgresQL username")
 args_parser.add_argument("--path-to-data", type=str, default="./csv", help="Path to directory with csv-files for load data")
-args_parser.add_argument("--load-mode", type=str, help="Load mode: cold psql or cold (warm) load in python")
 args = args_parser.parse_args()
 
 PATTERN_PATH_TO_REPLACE: Final = 'PATHVAR'
@@ -45,52 +44,6 @@ class BenchmarkResult(BaseModel):
 class MemoryResult(BaseModel):
     peak: int
     baseline: int
-
-def run_query_db_create(connecton: PgConnection, query: str) -> None:
-    with connecton.cursor() as cursor:
-        try:
-        
-            cursor.execute(query)
-        
-        except Exception as e:
-            print(f"Problem with create DB: {e}")
-            cursor.connection.rollback()
-            raise
-        
-        finally:
-            connecton.commit()
-
-def create_db_with_copy(
-        connection: PgConnection, 
-        path_to_query_ddl: str, 
-        path_to_data: str, 
-        path_to_output: str) -> None:
-    
-    with open(path_to_query_ddl) as reader:
-        query = reader.read()
-        query = query.replace(PATTERN_COPY_TO_REPLACE, 'COPY')
-        query = query.replace(PATTERN_PATH_TO_REPLACE, path_to_data)
-
-        with connection.cursor() as cursor:
-            try:
-                cursor.execute(QUERY_GET_DB_SIZE)
-                db_size_before = cursor.fetchall()[0][0]
-
-                start_db = time.time()
-                run_query_db_create(connection, query=query)
-                end_db = time.time()
-                
-                cursor.execute(QUERY_GET_DB_SIZE)
-                db_size_after = cursor.fetchall()[0][0]
-
-                with open(path_to_output, 'w') as o:
-                    o.write(f"Size DB BEFORE create schema and load data,{db_size_before}\n")
-                    o.write(f"Size DB AFTER create schema and load data,{db_size_after}\n")
-                    o.write(f"time_load,{end_db - start_db:.4f}\n")
-
-            except Exception:
-                cursor.connection.rollback()
-                raise 
 
 def read_memory(pid: int, mem_key: str) -> int:
     with open(f"/proc/{pid}/status") as f: 
@@ -187,17 +140,6 @@ def get_connection(host: str, port: int, user: str, timeout: int) -> Generator[P
         connection.close()
 
 if __name__ == "__main__":
-    if args.load_mode in ["cpython", "wpython"]:
-        print(f"Create schema and load data ({args.load_mode})")
-        
-        with get_connection(args.db_host, args.db_port, args.db_user, args.timeout_millis) as connection:
-            create_db_with_copy(
-                connection, 
-                path_to_query_ddl=args.path_ddl_query,
-                path_to_data=args.path_to_data, 
-                path_to_output=args.result_path
-            )
-
     benchmark(
         args.db_host, 
         args.db_port, 

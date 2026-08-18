@@ -1,0 +1,260 @@
+CREATE TABLE Company
+(
+    id bigint PRIMARY KEY NOT NULL
+);
+CREATE TABLE University
+(
+    id bigint PRIMARY KEY NOT NULL
+);
+CREATE TABLE Continent
+(
+    id bigint PRIMARY KEY NOT NULL
+);
+CREATE TABLE Country
+(
+    id bigint PRIMARY KEY NOT NULL
+);
+CREATE TABLE City
+(
+    id bigint PRIMARY KEY NOT NULL
+);
+CREATE TABLE Tag
+(
+    id bigint PRIMARY KEY NOT NULL
+);
+CREATE TABLE TagClass
+(
+    id bigint PRIMARY KEY NOT NULL
+);
+CREATE TABLE Forum
+(
+    id bigint PRIMARY KEY NOT NULL
+);
+CREATE TABLE Comment
+(
+    id bigint PRIMARY KEY NOT NULL
+);
+CREATE TABLE Post
+(
+    id bigint PRIMARY KEY NOT NULL
+);
+CREATE TABLE Person
+(
+    id bigint PRIMARY KEY NOT NULL
+);
+
+CREATE TABLE Comment_hasTag_Tag
+(
+    CommentId bigint NOT NULL,
+    TagId     bigint NOT NULL,
+    id        BIGSERIAL PRIMARY KEY
+);
+CREATE TABLE Post_hasTag_Tag
+(
+    PostId bigint NOT NULL,
+    TagId  bigint NOT NULL,
+    id     BIGSERIAL PRIMARY KEY
+);
+CREATE TABLE Forum_hasMember_Person
+(
+    ForumId  bigint NOT NULL,
+    PersonId bigint NOT NULL,
+    id       BIGSERIAL PRIMARY KEY
+);
+CREATE TABLE Person_hasInterest_Tag
+(
+    PersonId bigint NOT NULL,
+    TagId    bigint NOT NULL,
+    id       BIGSERIAL PRIMARY KEY
+);
+CREATE TABLE Person_likes_Comment
+(
+    PersonId  bigint NOT NULL,
+    CommentId bigint NOT NULL,
+    id        BIGSERIAL PRIMARY KEY
+);
+CREATE TABLE Person_likes_Post
+(
+    PersonId bigint NOT NULL,
+    PostId   bigint NOT NULL,
+    id       BIGSERIAL PRIMARY KEY
+);
+CREATE TABLE Person_knows_Person
+(
+    Person1Id bigint NOT NULL,
+    Person2Id bigint NOT NULL,
+    id        BIGSERIAL PRIMARY KEY
+);
+CREATE TABLE Comment_replyOf_Comment
+(
+    Comment1Id bigint NOT NULL,
+    Comment2Id bigint NOT NULL,
+    id         BIGSERIAL PRIMARY KEY
+);
+CREATE TABLE Comment_replyOf_Post
+(
+    CommentId bigint NOT NULL,
+    PostId    bigint NOT NULL,
+    id        BIGSERIAL PRIMARY KEY
+);
+CREATE TABLE Comment_hasCreator_Person
+(
+    CommentId bigint NOT NULL,
+    PersonId  bigint NOT NULL,
+    id        BIGSERIAL PRIMARY KEY
+);
+CREATE TABLE City_isPartOf_Country
+(
+    CityId    bigint NOT NULL,
+    CountryId bigint NOT NULL,
+    id        BIGSERIAL PRIMARY KEY
+);
+CREATE TABLE Tag_hasType_TagClass
+(
+    TagId      bigint NOT NULL,
+    TagClassId bigint NOT NULL,
+    id         BIGSERIAL PRIMARY KEY
+);
+CREATE TABLE Post_hasCreator_Person
+(
+    PostId   bigint NOT NULL,
+    PersonId bigint NOT NULL,
+    id       BIGSERIAL PRIMARY KEY
+);
+CREATE TABLE Person_isLocatedIn_City
+(
+    PersonId bigint NOT NULL,
+    CityId   bigint NOT NULL,
+    id       BIGSERIAL PRIMARY KEY
+);
+CREATE TABLE Forum_containerOf_Post
+(
+    ForumId bigint NOT NULL,
+    PostId  bigint NOT NULL,
+    id      BIGSERIAL PRIMARY KEY
+);
+
+\copy Company(id) FROM 'PATHVAR/Company.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy University(id) FROM 'PATHVAR/University.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Continent(id) FROM 'PATHVAR/Continent.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Country(id) FROM 'PATHVAR/Country.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy City(id) FROM 'PATHVAR/City.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Forum(id) FROM 'PATHVAR/Forum.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Comment(id) FROM 'PATHVAR/Comment.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Post(id) FROM 'PATHVAR/Post.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Person(id) FROM 'PATHVAR/Person.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Tag(id) FROM 'PATHVAR/Tag.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy TagClass(id) FROM 'PATHVAR/TagClass.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Comment_hasTag_Tag (CommentId, TagId) FROM 'PATHVAR/Comment_hasTag_Tag.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Post_hasTag_Tag (PostId, TagId) FROM 'PATHVAR/Post_hasTag_Tag.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Forum_hasMember_Person (ForumId, PersonId) FROM 'PATHVAR/Forum_hasMember_Person.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Person_hasInterest_Tag (PersonId, TagId) FROM 'PATHVAR/Person_hasInterest_Tag.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Person_likes_Comment (PersonId, CommentId) FROM 'PATHVAR/Person_likes_Comment.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Person_likes_Post (PersonId, PostId) FROM 'PATHVAR/Person_likes_Post.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Person_knows_Person (Person1id, Person2id) FROM 'PATHVAR/Person_knows_Person.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy City_isPartOf_Country (CityId, CountryId) FROM 'PATHVAR/City_isPartOf_Country.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Tag_hasType_TagClass (TagId, TagClassId) FROM 'PATHVAR/Tag_hasType_TagClass.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Comment_replyOf_Comment (Comment1Id, Comment2Id) FROM 'PATHVAR/Comment_replyOf_Comment.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Comment_replyOf_Post (CommentId, PostId) FROM 'PATHVAR/Comment_replyOf_Post.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Comment_hasCreator_Person (CommentId, PersonId) FROM 'PATHVAR/Comment_hasCreator_Person.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Post_hasCreator_Person (PostId, PersonId) FROM 'PATHVAR/Post_hasCreator_Person.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Person_isLocatedIn_City (PersonId, CityId) FROM 'PATHVAR/Person_isLocatedIn_City.csv' (DELIMITER '|', HEADER, FORMAT csv);
+\copy Forum_containerOf_Post (ForumId, PostId) FROM 'PATHVAR/Forum_containerOf_Post.csv' (DELIMITER '|', HEADER, FORMAT csv);
+
+CREATE MATERIALIZED VIEW Message AS
+SELECT id
+FROM Comment
+UNION ALL
+SELECT id
+FROM Post;
+
+CREATE MATERIALIZED VIEW Comment_replyOf_Message AS
+SELECT Comment1Id AS CommentId, Comment2Id As MessageId
+FROM Comment_replyOf_Comment
+UNION ALL
+SELECT CommentId, PostId As MessageId
+FROM Comment_replyOf_Post;
+
+CREATE MATERIALIZED VIEW Message_hasCreator_Person AS
+SELECT CommentId AS MessageId, PersonId
+FROM Comment_hasCreator_Person
+UNION ALL
+SELECT PostId AS MessageId, PersonId
+FROM Post_hasCreator_Person;
+
+CREATE MATERIALIZED VIEW Message_hasTag_Tag AS
+SELECT CommentId AS MessageId, TagId
+FROM Comment_hasTag_Tag
+UNION ALL
+SELECT PostId AS MessageId, TagId
+FROM Post_hasTag_Tag;
+
+CREATE MATERIALIZED VIEW Person_likes_Message AS
+SELECT PersonId, CommentId AS MessageId
+FROM Person_likes_Comment
+UNION ALL
+SELECT PersonId, PostId AS MessageId
+FROM Person_likes_Post;
+
+CREATE
+PROPERTY GRAPH lsqb
+VERTEX TABLES (
+    Forum LABEL forum PROPERTIES (id),
+    Comment LABEL comment PROPERTIES (id),
+    Post LABEL post PROPERTIES (id),
+    Message KEY(id) LABEL message PROPERTIES (id),
+    University LABEL university PROPERTIES (id),
+    Company LABEL company PROPERTIES (id),
+    Person LABEL person PROPERTIES (id),
+    Continent LABEL continent PROPERTIES (id),
+    Country LABEL country PROPERTIES (id),
+    City LABEL city PROPERTIES (id),
+    Tag LABEL tag PROPERTIES (id),
+    TagClass LABEL tagClass PROPERTIES (id)
+)
+EDGE TABLES (
+    City_isPartOf_Country SOURCE KEY (CityId) REFERENCES City (id)
+                            DESTINATION KEY (CountryId) REFERENCES Country (id),
+    Comment_hasCreator_Person SOURCE KEY (CommentId) REFERENCES Comment (id)
+                            DESTINATION KEY (PersonId) REFERENCES Person (id)
+                            LABEL Comment_hasCreator,
+    Comment_hasTag_Tag SOURCE KEY (CommentId) REFERENCES Comment (id)
+                            DESTINATION KEY (TagId) REFERENCES Tag (id)
+                            LABEL Comment_hasTag,
+    Comment_replyOf_Message KEY (CommentId, MessageId) SOURCE KEY (CommentId) REFERENCES Comment (id)
+                            DESTINATION KEY (MessageId) REFERENCES Message (id)
+                            LABEL replyOf_Message,
+    Comment_replyOf_Post SOURCE KEY (CommentId) REFERENCES Comment (id)
+                            DESTINATION KEY (PostId) REFERENCES Post (id)
+                            LABEL replyOf_Post,
+    Forum_containerOf_Post SOURCE KEY (ForumId) REFERENCES Forum (id)
+                            DESTINATION KEY (PostId) REFERENCES Post (id)
+                            LABEL containerOf,
+    Forum_hasMember_Person SOURCE KEY (ForumId) REFERENCES Forum (id)
+                            DESTINATION KEY (PersonId) REFERENCES Person (id)
+                            LABEL hasMember,
+    Message_hasCreator_Person KEY (MessageId, PersonId) SOURCE KEY (MessageId) REFERENCES Message (id)
+                            DESTINATION KEY (PersonId) REFERENCES Person (id)
+                            LABEL Message_hasCreator,
+    Message_hasTag_Tag KEY (MessageId, TagId)  SOURCE KEY (MessageId) REFERENCES Message (id)
+                            DESTINATION KEY (TagId) REFERENCES Tag (id)
+                            LABEL Message_hasTag,
+    Person_hasInterest_Tag SOURCE KEY (PersonId) REFERENCES Person (id)
+                            DESTINATION KEY (TagId) REFERENCES Tag (id)
+                            LABEL hasInterest,
+    Person_isLocatedIn_City SOURCE KEY (PersonId) REFERENCES Person (id)
+                            DESTINATION KEY (CityId) REFERENCES City (id)
+                            LABEL Person_isLocatedIn,
+    Person_knows_Person KEY (Person1Id, Person2Id) SOURCE KEY (Person1Id) REFERENCES Person (id)
+                            DESTINATION KEY (Person2Id) REFERENCES Person (id)
+                            LABEL Knows,
+    Person_likes_Message KEY (PersonId, MessageId)  SOURCE KEY (PersonId) REFERENCES Person (id)
+                            DESTINATION KEY (MessageId) REFERENCES Message (id)
+                            LABEL likes_Message,
+    Post_hasCreator_Person SOURCE KEY (PostId) REFERENCES Post (id)
+                            DESTINATION KEY (PersonId) REFERENCES Person (id)
+                            LABEL Post_hasCreator,
+    Tag_hasType_TagClass SOURCE KEY (TagId) REFERENCES Tag (id)
+                            DESTINATION KEY (TagClassId) REFERENCES TagClass (id)
+                            LABEL hasType
+);
