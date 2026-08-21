@@ -1,0 +1,9 @@
+Time load data,8959.465
+Before  pg_size_pretty 
+----------------
+ 7902 kB
+(1 row)
+After  pg_size_pretty 
+----------------
+ 213 GB
+(1 row)

@@ -1,0 +1,712 @@
+{
+ "query": "q7.sql",
+ "executed": true,
+ "error": null,
+ "plan": [
+  {
+   "Plan": {
+    "Node Type": "Aggregate",
+    "Strategy": "Plain",
+    "Partial Mode": "Finalize",
+    "Parallel Aware": false,
+    "Async Capable": false,
+    "Startup Cost": 88189.15,
+    "Total Cost": 88189.16,
+    "Plan Rows": 1,
+    "Plan Width": 8,
+    "Actual Rows": 1.0,
+    "Actual Loops": 1,
+    "Disabled": false,
+    "Output": [
+     "count(*)"
+    ],
+    "Shared Hit Blocks": 6788,
+    "Shared Read Blocks": 64,
+    "Shared Dirtied Blocks": 0,
+    "Shared Written Blocks": 64,
+    "Local Hit Blocks": 0,
+    "Local Read Blocks": 0,
+    "Local Dirtied Blocks": 0,
+    "Local Written Blocks": 0,
+    "Temp Read Blocks": 5141,
+    "Temp Written Blocks": 5202,
+    "Plans": [
+     {
+      "Node Type": "Gather",
+      "Parent Relationship": "Outer",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 88188.94,
+      "Total Cost": 88189.15,
+      "Plan Rows": 2,
+      "Plan Width": 8,
+      "Actual Rows": 2.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Output": [
+       "(PARTIAL count(*))"
+      ],
+      "Workers Planned": 1,
+      "Workers Launched": 1,
+      "Single Copy": false,
+      "Shared Hit Blocks": 6788,
+      "Shared Read Blocks": 64,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 64,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 5141,
+      "Temp Written Blocks": 5202,
+      "Plans": [
+       {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Partial",
+        "Parent Relationship": "Outer",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 87188.94,
+        "Total Cost": 87188.95,
+        "Plan Rows": 1,
+        "Plan Width": 8,
+        "Actual Rows": 1.0,
+        "Actual Loops": 2,
+        "Disabled": false,
+        "Output": [
+         "PARTIAL count(*)"
+        ],
+        "Shared Hit Blocks": 6788,
+        "Shared Read Blocks": 64,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 64,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 5141,
+        "Temp Written Blocks": 5202,
+        "Workers": [
+         {
+          "Worker Number": 0,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 3358,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 2456,
+          "Temp Written Blocks": 2670
+         }
+        ],
+        "Plans": [
+         {
+          "Node Type": "Hash Join",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": true,
+          "Async Capable": false,
+          "Join Type": "Right",
+          "Startup Cost": 69023.88,
+          "Total Cost": 83703.68,
+          "Plan Rows": 1394105,
+          "Plan Width": 0,
+          "Actual Rows": 814066.0,
+          "Actual Loops": 2,
+          "Disabled": false,
+          "Inner Unique": false,
+          "Hash Cond": "(comment_replyof_message.parentmessageid = message_hastag_tag.messageid)",
+          "Shared Hit Blocks": 6788,
+          "Shared Read Blocks": 64,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 64,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 5141,
+          "Temp Written Blocks": 5202,
+          "Workers": [
+           {
+            "Worker Number": 0,
+            "Actual Rows": 820678.0,
+            "Actual Loops": 1,
+            "Shared Hit Blocks": 3358,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 2456,
+            "Temp Written Blocks": 2670
+           }
+          ],
+          "Plans": [
+           {
+            "Node Type": "Seq Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": true,
+            "Async Capable": false,
+            "Relation Name": "comment_replyof_message",
+            "Schema": "public",
+            "Alias": "comment_replyof_message",
+            "Startup Cost": 0.0,
+            "Total Cost": 2483.58,
+            "Plan Rows": 126758,
+            "Plan Width": 8,
+            "Actual Rows": 107744.0,
+            "Actual Loops": 2,
+            "Disabled": false,
+            "Output": [
+             "comment_replyof_message.parentmessageid"
+            ],
+            "Shared Hit Blocks": 1216,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Workers": [
+             {
+              "Worker Number": 0,
+              "Actual Rows": 104895.0,
+              "Actual Loops": 1,
+              "Shared Hit Blocks": 595,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+             }
+            ]
+           },
+           {
+            "Node Type": "Hash",
+            "Parent Relationship": "Inner",
+            "Parallel Aware": true,
+            "Async Capable": false,
+            "Startup Cost": 61735.66,
+            "Total Cost": 61735.66,
+            "Plan Rows": 444178,
+            "Plan Width": 8,
+            "Actual Rows": 339208.5,
+            "Actual Loops": 2,
+            "Disabled": false,
+            "Output": [
+             "message_hastag_tag.messageid"
+            ],
+            "Hash Buckets": 262144,
+            "Original Hash Buckets": 262144,
+            "Hash Batches": 8,
+            "Original Hash Batches": 8,
+            "Peak Memory Usage": 5696,
+            "Shared Hit Blocks": 5572,
+            "Shared Read Blocks": 64,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 64,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 2352,
+            "Temp Written Blocks": 4438,
+            "Workers": [
+             {
+              "Worker Number": 0,
+              "Actual Rows": 371567.0,
+              "Actual Loops": 1,
+              "Shared Hit Blocks": 2763,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 1192,
+              "Temp Written Blocks": 2294
+             }
+            ],
+            "Plans": [
+             {
+              "Node Type": "Merge Join",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Left",
+              "Startup Cost": 53728.06,
+              "Total Cost": 61735.66,
+              "Plan Rows": 444178,
+              "Plan Width": 8,
+              "Actual Rows": 339208.5,
+              "Actual Loops": 2,
+              "Disabled": false,
+              "Output": [
+               "message_hastag_tag.messageid"
+              ],
+              "Inner Unique": false,
+              "Merge Cond": "(message_hastag_tag.messageid = person_likes_message.messageid)",
+              "Shared Hit Blocks": 5572,
+              "Shared Read Blocks": 64,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 64,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 2352,
+              "Temp Written Blocks": 2378,
+              "Workers": [
+               {
+                "Worker Number": 0,
+                "Actual Rows": 371567.0,
+                "Actual Loops": 1,
+                "Shared Hit Blocks": 2763,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 1192,
+                "Temp Written Blocks": 1290
+               }
+              ],
+              "Plans": [
+               {
+                "Node Type": "Sort",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 34930.29,
+                "Total Cost": 35399.74,
+                "Plan Rows": 187781,
+                "Plan Width": 8,
+                "Actual Rows": 159613.5,
+                "Actual Loops": 2,
+                "Disabled": false,
+                "Output": [
+                 "message_hastag_tag.messageid"
+                ],
+                "Sort Key": [
+                 "message_hastag_tag.messageid"
+                ],
+                "Sort Method": "quicksort",
+                "Sort Space Used": 4096,
+                "Sort Space Type": "Memory",
+                "Shared Hit Blocks": 3780,
+                "Shared Read Blocks": 64,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 64,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 2352,
+                "Temp Written Blocks": 2378,
+                "Workers": [
+                 {
+                  "Worker Number": 0,
+                  "Actual Rows": 175251.0,
+                  "Actual Loops": 1,
+                  "Sort Method": "external merge",
+                  "Sort Space Used": 2064,
+                  "Sort Space Type": "Disk",
+                  "Shared Hit Blocks": 1867,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 1192,
+                  "Temp Written Blocks": 1290
+                 }
+                ],
+                "Plans": [
+                 {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": true,
+                  "Async Capable": false,
+                  "Join Type": "Inner",
+                  "Startup Cost": 8138.32,
+                  "Total Cost": 15912.9,
+                  "Plan Rows": 187781,
+                  "Plan Width": 8,
+                  "Actual Rows": 159613.5,
+                  "Actual Loops": 2,
+                  "Disabled": false,
+                  "Output": [
+                   "message_hastag_tag.messageid"
+                  ],
+                  "Inner Unique": false,
+                  "Hash Cond": "(message_hastag_tag.messageid = message_hascreator_person.messageid)",
+                  "Shared Hit Blocks": 3776,
+                  "Shared Read Blocks": 64,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 64,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 2094,
+                  "Temp Written Blocks": 2120,
+                  "Workers": [
+                   {
+                    "Worker Number": 0,
+                    "Actual Rows": 175251.0,
+                    "Actual Loops": 1,
+                    "Shared Hit Blocks": 1863,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 934,
+                    "Temp Written Blocks": 1032
+                   }
+                  ],
+                  "Plans": [
+                   {
+                    "Node Type": "Seq Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": true,
+                    "Async Capable": false,
+                    "Relation Name": "message_hastag_tag",
+                    "Schema": "public",
+                    "Alias": "message_hastag_tag",
+                    "Startup Cost": 0.0,
+                    "Total Cost": 3605.81,
+                    "Plan Rows": 187781,
+                    "Plan Width": 8,
+                    "Actual Rows": 159613.5,
+                    "Actual Loops": 2,
+                    "Disabled": false,
+                    "Output": [
+                     "message_hastag_tag.messageid"
+                    ],
+                    "Shared Hit Blocks": 1728,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 0,
+                    "Workers": [
+                     {
+                      "Worker Number": 0,
+                      "Actual Rows": 158545.0,
+                      "Actual Loops": 1,
+                      "Shared Hit Blocks": 857,
+                      "Shared Read Blocks": 0,
+                      "Shared Dirtied Blocks": 0,
+                      "Shared Written Blocks": 0,
+                      "Local Hit Blocks": 0,
+                      "Local Read Blocks": 0,
+                      "Local Dirtied Blocks": 0,
+                      "Local Written Blocks": 0,
+                      "Temp Read Blocks": 0,
+                      "Temp Written Blocks": 0
+                     }
+                    ]
+                   },
+                   {
+                    "Node Type": "Hash",
+                    "Parent Relationship": "Inner",
+                    "Parallel Aware": true,
+                    "Async Capable": false,
+                    "Startup Cost": 4393.92,
+                    "Total Cost": 4393.92,
+                    "Plan Rows": 228192,
+                    "Plan Width": 8,
+                    "Actual Rows": 193963.0,
+                    "Actual Loops": 2,
+                    "Disabled": false,
+                    "Output": [
+                     "message_hascreator_person.messageid"
+                    ],
+                    "Hash Buckets": 262144,
+                    "Original Hash Buckets": 262144,
+                    "Hash Batches": 4,
+                    "Original Hash Batches": 4,
+                    "Peak Memory Usage": 5888,
+                    "Shared Hit Blocks": 2048,
+                    "Shared Read Blocks": 64,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 64,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 1008,
+                    "Workers": [
+                     {
+                      "Worker Number": 0,
+                      "Actual Rows": 183890.0,
+                      "Actual Loops": 1,
+                      "Shared Hit Blocks": 1006,
+                      "Shared Read Blocks": 0,
+                      "Shared Dirtied Blocks": 0,
+                      "Shared Written Blocks": 0,
+                      "Local Hit Blocks": 0,
+                      "Local Read Blocks": 0,
+                      "Local Dirtied Blocks": 0,
+                      "Local Written Blocks": 0,
+                      "Temp Read Blocks": 0,
+                      "Temp Written Blocks": 480
+                     }
+                    ],
+                    "Plans": [
+                     {
+                      "Node Type": "Seq Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": true,
+                      "Async Capable": false,
+                      "Relation Name": "message_hascreator_person",
+                      "Schema": "public",
+                      "Alias": "message_hascreator_person",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 4393.92,
+                      "Plan Rows": 228192,
+                      "Plan Width": 8,
+                      "Actual Rows": 193963.0,
+                      "Actual Loops": 2,
+                      "Disabled": false,
+                      "Output": [
+                       "message_hascreator_person.messageid"
+                      ],
+                      "Shared Hit Blocks": 2048,
+                      "Shared Read Blocks": 64,
+                      "Shared Dirtied Blocks": 0,
+                      "Shared Written Blocks": 64,
+                      "Local Hit Blocks": 0,
+                      "Local Read Blocks": 0,
+                      "Local Dirtied Blocks": 0,
+                      "Local Written Blocks": 0,
+                      "Temp Read Blocks": 0,
+                      "Temp Written Blocks": 0,
+                      "Workers": [
+                       {
+                        "Worker Number": 0,
+                        "Actual Rows": 183890.0,
+                        "Actual Loops": 1,
+                        "Shared Hit Blocks": 1006,
+                        "Shared Read Blocks": 0,
+                        "Shared Dirtied Blocks": 0,
+                        "Shared Written Blocks": 0,
+                        "Local Hit Blocks": 0,
+                        "Local Read Blocks": 0,
+                        "Local Dirtied Blocks": 0,
+                        "Local Written Blocks": 0,
+                        "Temp Read Blocks": 0,
+                        "Temp Written Blocks": 0
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 }
+                ]
+               },
+               {
+                "Node Type": "Materialize",
+                "Parent Relationship": "Inner",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 18797.77,
+                "Total Cost": 19609.78,
+                "Plan Rows": 162402,
+                "Plan Width": 8,
+                "Actual Rows": 297861.5,
+                "Actual Loops": 2,
+                "Disabled": false,
+                "Output": [
+                 "person_likes_message.messageid"
+                ],
+                "Storage": "Memory",
+                "Maximum Storage": 29,
+                "Shared Hit Blocks": 1792,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0,
+                "Workers": [
+                 {
+                  "Worker Number": 0,
+                  "Actual Rows": 311975.0,
+                  "Actual Loops": 1,
+                  "Shared Hit Blocks": 896,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                 }
+                ],
+                "Plans": [
+                 {
+                  "Node Type": "Sort",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 18797.77,
+                  "Total Cost": 19203.78,
+                  "Plan Rows": 162402,
+                  "Plan Width": 8,
+                  "Actual Rows": 162367.0,
+                  "Actual Loops": 2,
+                  "Disabled": false,
+                  "Output": [
+                   "person_likes_message.messageid"
+                  ],
+                  "Sort Key": [
+                   "person_likes_message.messageid"
+                  ],
+                  "Sort Method": "quicksort",
+                  "Sort Space Used": 4096,
+                  "Sort Space Type": "Memory",
+                  "Shared Hit Blocks": 1792,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0,
+                  "Workers": [
+                   {
+                    "Worker Number": 0,
+                    "Actual Rows": 162367.0,
+                    "Actual Loops": 1,
+                    "Sort Method": "quicksort",
+                    "Sort Space Used": 4096,
+                    "Sort Space Type": "Memory",
+                    "Shared Hit Blocks": 896,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 0
+                   }
+                  ],
+                  "Plans": [
+                   {
+                    "Node Type": "Seq Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Relation Name": "person_likes_message",
+                    "Schema": "public",
+                    "Alias": "person_likes_message",
+                    "Startup Cost": 0.0,
+                    "Total Cost": 2520.02,
+                    "Plan Rows": 162402,
+                    "Plan Width": 8,
+                    "Actual Rows": 162402.0,
+                    "Actual Loops": 2,
+                    "Disabled": false,
+                    "Output": [
+                     "person_likes_message.messageid"
+                    ],
+                    "Shared Hit Blocks": 1792,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 0,
+                    "Workers": [
+                     {
+                      "Worker Number": 0,
+                      "Actual Rows": 162402.0,
+                      "Actual Loops": 1,
+                      "Shared Hit Blocks": 896,
+                      "Shared Read Blocks": 0,
+                      "Shared Dirtied Blocks": 0,
+                      "Shared Written Blocks": 0,
+                      "Local Hit Blocks": 0,
+                      "Local Read Blocks": 0,
+                      "Local Dirtied Blocks": 0,
+                      "Local Written Blocks": 0,
+                      "Temp Read Blocks": 0,
+                      "Temp Written Blocks": 0
+                     }
+                    ]
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "Settings": {},
+   "Planning": {
+    "Shared Hit Blocks": 112,
+    "Shared Read Blocks": 0,
+    "Shared Dirtied Blocks": 0,
+    "Shared Written Blocks": 0,
+    "Local Hit Blocks": 0,
+    "Local Read Blocks": 0,
+    "Local Dirtied Blocks": 0,
+    "Local Written Blocks": 0,
+    "Temp Read Blocks": 0,
+    "Temp Written Blocks": 0
+   },
+   "Planning Time": 0.282,
+   "Triggers": [],
+   "Execution Time": 509.042
+  }
+ ]
+}

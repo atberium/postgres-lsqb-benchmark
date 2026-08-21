@@ -1,0 +1,57 @@
+campaign: 1
+name: initial
+harness: harness.py
+summary: >
+  The first measurement campaign. Run before the protocol was fixed, so several
+  conditions vary between rows. Retained because the SF 100 measurements exist
+  nowhere else, and because it is the only campaign measured without ANALYZE.
+
+protocol:
+  repetitions: 3               # at every scale factor, including SF 100
+  statistics: none             # the harness never ran ANALYZE
+  query_order: filesystem      # os.walk, unsorted; differs between configurations
+  connections: one per repetition, closed immediately afterwards
+  reported_statistic: median of the repetitions; mean also recorded
+  per_repetition_times: not recorded
+  timeout:
+    sf_0.1_to_30: 600000       # ms
+    sf_100: 3600000
+
+exceptions:
+  - version: beta 1
+    scale_factor: 100
+    note: database loaded, no query results recorded
+  - version: beta 2
+    scale_factor: 100
+    note: one repetition, 1800000 ms timeout
+  - versions: [beta 1, beta 2]
+    approach: relational
+    note: not measured; the cross-version comparison covers SQL/PGQ only
+
+instances:                     # flavour varies with scale factor, a known confound
+  sf_0.1:  {flavour: 2cpu-16ram,   vcpu: 2,  ram_gib: 16}
+  sf_0.3:  {flavour: 8cpu-32ram,   vcpu: 8,  ram_gib: 32}
+  sf_1:    {flavour: 8cpu-128ram,  vcpu: 8,  ram_gib: 128}
+  sf_3:    {flavour: 8cpu-128ram,  vcpu: 8,  ram_gib: 128}
+  sf_10:   {flavour: 8cpu-128ram,  vcpu: 8,  ram_gib: 128}
+  sf_30:   {flavour: 8cpu-128ram,  vcpu: 8,  ram_gib: 128}
+  sf_100:  {flavour: 20cpu-320ram, vcpu: 20, ram_gib: 320}
+
+plans:
+  count: 351
+  captured_by: a separate invocation with --analyze, after the timings
+  statistics_state: ANALYZE was run before capture
+  caveat: >
+    The plans were therefore taken in a different statistics state from the
+    timings in this campaign. They are diagnostic evidence about the queries,
+    not explanations of these timings.
+
+contents:
+  results: "{version}/{approach}/{strategy}-sf{n}{projection}.txt"
+  plans:   "{version}/{approach}/analyze/{strategy}-sf{n}/q{1..9}.json"
+  state:   "{version}/{approach}/analyze/{strategy}-sf{n}/_state.json"
+
+output_format:
+  results: >
+    timestamp,query,result,median,mean,peak_memory_kb
+    plus a trailing failure_rate line

@@ -1,0 +1,468 @@
+{
+ "query": "q6.sql",
+ "executed": true,
+ "error": null,
+ "plan": [
+  {
+   "Plan": {
+    "Node Type": "Aggregate",
+    "Strategy": "Plain",
+    "Partial Mode": "Finalize",
+    "Parallel Aware": false,
+    "Async Capable": false,
+    "Startup Cost": 14095096.95,
+    "Total Cost": 14095096.96,
+    "Plan Rows": 1,
+    "Plan Width": 8,
+    "Actual Rows": 1.0,
+    "Actual Loops": 1,
+    "Disabled": false,
+    "Output": [
+     "count(*)"
+    ],
+    "Shared Hit Blocks": 10197,
+    "Shared Read Blocks": 0,
+    "Shared Dirtied Blocks": 2,
+    "Shared Written Blocks": 2,
+    "Local Hit Blocks": 0,
+    "Local Read Blocks": 0,
+    "Local Dirtied Blocks": 0,
+    "Local Written Blocks": 0,
+    "Temp Read Blocks": 3477,
+    "Temp Written Blocks": 3504,
+    "Plans": [
+     {
+      "Node Type": "Gather",
+      "Parent Relationship": "Outer",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 14095096.73,
+      "Total Cost": 14095096.94,
+      "Plan Rows": 2,
+      "Plan Width": 8,
+      "Actual Rows": 2.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Output": [
+       "(PARTIAL count(*))"
+      ],
+      "Workers Planned": 1,
+      "Workers Launched": 1,
+      "Single Copy": false,
+      "Shared Hit Blocks": 10197,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 2,
+      "Shared Written Blocks": 2,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 3477,
+      "Temp Written Blocks": 3504,
+      "Plans": [
+       {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Partial Mode": "Partial",
+        "Parent Relationship": "Outer",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 14094096.73,
+        "Total Cost": 14094096.74,
+        "Plan Rows": 1,
+        "Plan Width": 8,
+        "Actual Rows": 1.0,
+        "Actual Loops": 2,
+        "Disabled": false,
+        "Output": [
+         "PARTIAL count(*)"
+        ],
+        "Shared Hit Blocks": 10197,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 2,
+        "Shared Written Blocks": 2,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 3477,
+        "Temp Written Blocks": 3504,
+        "Workers": [
+         {
+          "Worker Number": 0,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 4847,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 1497,
+          "Temp Written Blocks": 1744
+         }
+        ],
+        "Plans": [
+         {
+          "Node Type": "Hash Join",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": true,
+          "Async Capable": false,
+          "Join Type": "Inner",
+          "Startup Cost": 14577.0,
+          "Total Cost": 11318395.11,
+          "Plan Rows": 1110280648,
+          "Plan Width": 0,
+          "Actual Rows": 834067160.0,
+          "Actual Loops": 2,
+          "Disabled": false,
+          "Inner Unique": false,
+          "Hash Cond": "(pkp2.person2id = person_hasinterest_tag.personid)",
+          "Shared Hit Blocks": 10197,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 2,
+          "Shared Written Blocks": 2,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 3477,
+          "Temp Written Blocks": 3504,
+          "Workers": [
+           {
+            "Worker Number": 0,
+            "Actual Rows": 832800773.0,
+            "Actual Loops": 1,
+            "Shared Hit Blocks": 4847,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 1497,
+            "Temp Written Blocks": 1744
+           }
+          ],
+          "Plans": [
+           {
+            "Node Type": "Hash Join",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": true,
+            "Async Capable": false,
+            "Join Type": "Inner",
+            "Startup Cost": 9754.11,
+            "Total Cost": 468947.0,
+            "Plan Rows": 33831723,
+            "Plan Width": 8,
+            "Actual Rows": 35795105.0,
+            "Actual Loops": 2,
+            "Disabled": false,
+            "Output": [
+             "pkp2.person2id"
+            ],
+            "Inner Unique": false,
+            "Hash Cond": "(pkp2.person1id = pkp1.person2id)",
+            "Join Filter": "(pkp1.person1id <> pkp2.person2id)",
+            "Rows Removed by Join Filter": 226293,
+            "Shared Hit Blocks": 7375,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 1,
+            "Shared Written Blocks": 1,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 3477,
+            "Temp Written Blocks": 3504,
+            "Workers": [
+             {
+              "Worker Number": 0,
+              "Actual Rows": 35675141.0,
+              "Actual Loops": 1,
+              "Shared Hit Blocks": 3666,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 1497,
+              "Temp Written Blocks": 1744
+             }
+            ],
+            "Plans": [
+             {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": true,
+              "Async Capable": false,
+              "Relation Name": "person_knows_person",
+              "Schema": "public",
+              "Alias": "pkp2",
+              "Startup Cost": 0.0,
+              "Total Cost": 5126.27,
+              "Plan Rows": 266227,
+              "Plan Width": 16,
+              "Actual Rows": 226293.0,
+              "Actual Loops": 2,
+              "Disabled": false,
+              "Output": [
+               "pkp2.person1id",
+               "pkp2.person2id"
+              ],
+              "Shared Hit Blocks": 2464,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Workers": [
+               {
+                "Worker Number": 0,
+                "Actual Rows": 226070.0,
+                "Actual Loops": 1,
+                "Shared Hit Blocks": 1238,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+               }
+              ]
+             },
+             {
+              "Node Type": "Hash",
+              "Parent Relationship": "Inner",
+              "Parallel Aware": true,
+              "Async Capable": false,
+              "Startup Cost": 5126.27,
+              "Total Cost": 5126.27,
+              "Plan Rows": 266227,
+              "Plan Width": 16,
+              "Actual Rows": 226293.0,
+              "Actual Loops": 2,
+              "Disabled": false,
+              "Output": [
+               "pkp1.person2id",
+               "pkp1.person1id"
+              ],
+              "Hash Buckets": 262144,
+              "Original Hash Buckets": 262144,
+              "Hash Batches": 4,
+              "Original Hash Batches": 4,
+              "Peak Memory Usage": 7520,
+              "Shared Hit Blocks": 4911,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 1,
+              "Shared Written Blocks": 1,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 1496,
+              "Workers": [
+               {
+                "Worker Number": 0,
+                "Actual Rows": 223186.0,
+                "Actual Loops": 1,
+                "Shared Hit Blocks": 2428,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 740
+               }
+              ],
+              "Plans": [
+               {
+                "Node Type": "Seq Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": true,
+                "Async Capable": false,
+                "Relation Name": "person_knows_person",
+                "Schema": "public",
+                "Alias": "pkp1",
+                "Startup Cost": 0.0,
+                "Total Cost": 5126.27,
+                "Plan Rows": 266227,
+                "Plan Width": 16,
+                "Actual Rows": 226293.0,
+                "Actual Loops": 2,
+                "Disabled": false,
+                "Output": [
+                 "pkp1.person2id",
+                 "pkp1.person1id"
+                ],
+                "Shared Hit Blocks": 4911,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 1,
+                "Shared Written Blocks": 1,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0,
+                "Workers": [
+                 {
+                  "Worker Number": 0,
+                  "Actual Rows": 223186.0,
+                  "Actual Loops": 1,
+                  "Shared Hit Blocks": 2428,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "Node Type": "Hash",
+            "Parent Relationship": "Inner",
+            "Parallel Aware": true,
+            "Async Capable": false,
+            "Startup Cost": 2943.51,
+            "Total Cost": 2943.51,
+            "Plan Rows": 150351,
+            "Plan Width": 8,
+            "Actual Rows": 127798.0,
+            "Actual Loops": 2,
+            "Disabled": false,
+            "Output": [
+             "person_hasinterest_tag.personid"
+            ],
+            "Hash Buckets": 262144,
+            "Original Hash Buckets": 262144,
+            "Hash Batches": 1,
+            "Original Hash Batches": 1,
+            "Peak Memory Usage": 12096,
+            "Shared Hit Blocks": 2822,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 1,
+            "Shared Written Blocks": 1,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Workers": [
+             {
+              "Worker Number": 0,
+              "Actual Rows": 108891.0,
+              "Actual Loops": 1,
+              "Shared Hit Blocks": 1181,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+             }
+            ],
+            "Plans": [
+             {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": true,
+              "Async Capable": false,
+              "Relation Name": "person_hasinterest_tag",
+              "Schema": "public",
+              "Alias": "person_hasinterest_tag",
+              "Startup Cost": 0.0,
+              "Total Cost": 2943.51,
+              "Plan Rows": 150351,
+              "Plan Width": 8,
+              "Actual Rows": 127798.0,
+              "Actual Loops": 2,
+              "Disabled": false,
+              "Output": [
+               "person_hasinterest_tag.personid"
+              ],
+              "Shared Hit Blocks": 2822,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 1,
+              "Shared Written Blocks": 1,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Workers": [
+               {
+                "Worker Number": 0,
+                "Actual Rows": 108891.0,
+                "Actual Loops": 1,
+                "Shared Hit Blocks": 1181,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "Settings": {},
+   "Planning": {
+    "Shared Hit Blocks": 76,
+    "Shared Read Blocks": 0,
+    "Shared Dirtied Blocks": 0,
+    "Shared Written Blocks": 0,
+    "Local Hit Blocks": 0,
+    "Local Read Blocks": 0,
+    "Local Dirtied Blocks": 0,
+    "Local Written Blocks": 0,
+    "Temp Read Blocks": 0,
+    "Temp Written Blocks": 0
+   },
+   "Planning Time": 0.187,
+   "Triggers": [],
+   "Execution Time": 51701.773
+  }
+ ]
+}
