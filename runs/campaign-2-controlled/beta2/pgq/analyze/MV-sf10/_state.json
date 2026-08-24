@@ -1,0 +1,620 @@
+{
+ "captured_at": "2026-08-21T13:14:33.584944",
+ "settings": [
+  {
+   "name": "autovacuum_naptime",
+   "setting": "60",
+   "unit": "s",
+   "source": "default"
+  },
+  {
+   "name": "effective_cache_size",
+   "setting": "524288",
+   "unit": "8kB",
+   "source": "default"
+  },
+  {
+   "name": "jit",
+   "setting": "off",
+   "unit": null,
+   "source": "default"
+  },
+  {
+   "name": "max_parallel_workers",
+   "setting": "8",
+   "unit": null,
+   "source": "default"
+  },
+  {
+   "name": "max_parallel_workers_per_gather",
+   "setting": "2",
+   "unit": null,
+   "source": "default"
+  },
+  {
+   "name": "random_page_cost",
+   "setting": "4",
+   "unit": null,
+   "source": "default"
+  },
+  {
+   "name": "server_version",
+   "setting": "19beta2 (Debian 19~beta2-1.pgdg13+1)",
+   "unit": null,
+   "source": "default"
+  },
+  {
+   "name": "shared_buffers",
+   "setting": "16384",
+   "unit": "8kB",
+   "source": "configuration file"
+  },
+  {
+   "name": "statement_timeout",
+   "setting": "600000",
+   "unit": "ms",
+   "source": "client"
+  },
+  {
+   "name": "work_mem",
+   "setting": "4096",
+   "unit": "kB",
+   "source": "default"
+  }
+ ],
+ "analyze": {
+  "status": "ANALYZE",
+  "notices": [
+   "INFO:  \"pg_range\": scanned 1 of 1 pages, containing 6 live rows and 0 dead rows; 6 rows in sample, 6 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.pg_catalog.pg_range\"\navg read rate: 15.625 MB/s, avg write rate: 0.000 MB/s\nbuffer usage: 100 hits, 2 reads, 0 dirtied\nWAL usage: 13 records, 0 full page images, 978 bytes, 0 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"pg_catalog.pg_transform\"",
+   "INFO:  \"pg_transform\": scanned 0 of 0 pages, containing 0 live rows and 0 dead rows; 0 rows in sample, 0 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.pg_catalog.pg_transform\"\navg read rate: 0.000 MB/s, avg write rate: 0.000 MB/s\nbuffer usage: 28 hits, 0 reads, 0 dirtied\nWAL usage: 0 records, 0 full page images, 0 bytes, 0 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"pg_catalog.pg_sequence\"",
+   "INFO:  \"pg_sequence\": scanned 1 of 1 pages, containing 15 live rows and 15 dead rows; 15 rows in sample, 15 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.pg_catalog.pg_sequence\"\navg read rate: 7.812 MB/s, avg write rate: 15.625 MB/s\nbuffer usage: 85 hits, 1 reads, 2 dirtied\nWAL usage: 18 records, 2 full page images, 18794 bytes, 16316 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"pg_catalog.pg_publication\"",
+   "INFO:  \"pg_publication\": scanned 0 of 0 pages, containing 0 live rows and 0 dead rows; 0 rows in sample, 0 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.pg_catalog.pg_publication\"\navg read rate: 0.000 MB/s, avg write rate: 0.000 MB/s\nbuffer usage: 46 hits, 0 reads, 0 dirtied\nWAL usage: 0 records, 0 full page images, 0 bytes, 0 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"pg_catalog.pg_publication_namespace\"",
+   "INFO:  \"pg_publication_namespace\": scanned 0 of 0 pages, containing 0 live rows and 0 dead rows; 0 rows in sample, 0 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.pg_catalog.pg_publication_namespace\"\navg read rate: 0.000 MB/s, avg write rate: 0.000 MB/s\nbuffer usage: 22 hits, 0 reads, 0 dirtied\nWAL usage: 0 records, 0 full page images, 0 bytes, 0 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"pg_catalog.pg_publication_rel\"",
+   "INFO:  \"pg_publication_rel\": scanned 0 of 0 pages, containing 0 live rows and 0 dead rows; 0 rows in sample, 0 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.pg_catalog.pg_publication_rel\"\navg read rate: 0.000 MB/s, avg write rate: 0.000 MB/s\nbuffer usage: 45 hits, 0 reads, 0 dirtied\nWAL usage: 0 records, 0 full page images, 0 bytes, 0 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"pg_catalog.pg_subscription_rel\"",
+   "INFO:  \"pg_subscription_rel\": scanned 0 of 0 pages, containing 0 live rows and 0 dead rows; 0 rows in sample, 0 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.pg_catalog.pg_subscription_rel\"\navg read rate: 0.000 MB/s, avg write rate: 0.000 MB/s\nbuffer usage: 22 hits, 0 reads, 0 dirtied\nWAL usage: 0 records, 0 full page images, 0 bytes, 0 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"pg_catalog.pg_propgraph_element\"",
+   "INFO:  \"pg_propgraph_element\": scanned 1 of 1 pages, containing 27 live rows and 0 dead rows; 27 rows in sample, 27 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.pg_catalog.pg_propgraph_element\"\navg read rate: 0.000 MB/s, avg write rate: 15.625 MB/s\nbuffer usage: 142 hits, 0 reads, 2 dirtied\nWAL usage: 32 records, 1 full page images, 16462 bytes, 6060 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"pg_catalog.pg_propgraph_element_label\"",
+   "INFO:  \"pg_propgraph_element_label\": scanned 1 of 1 pages, containing 27 live rows and 0 dead rows; 27 rows in sample, 27 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.pg_catalog.pg_propgraph_element_label\"\navg read rate: 0.000 MB/s, avg write rate: 7.812 MB/s\nbuffer usage: 80 hits, 0 reads, 1 dirtied\nWAL usage: 11 records, 1 full page images, 3435 bytes, 1212 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"pg_catalog.pg_propgraph_label\"",
+   "INFO:  \"pg_propgraph_label\": scanned 1 of 1 pages, containing 27 live rows and 0 dead rows; 27 rows in sample, 27 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.pg_catalog.pg_propgraph_label\"\navg read rate: 0.000 MB/s, avg write rate: 7.812 MB/s\nbuffer usage: 52 hits, 0 reads, 1 dirtied\nWAL usage: 10 records, 1 full page images, 6220 bytes, 2724 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"pg_catalog.pg_propgraph_label_property\"",
+   "INFO:  \"pg_propgraph_label_property\": scanned 2 of 2 pages, containing 53 live rows and 0 dead rows; 53 rows in sample, 53 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.pg_catalog.pg_propgraph_label_property\"\navg read rate: 0.000 MB/s, avg write rate: 23.438 MB/s\nbuffer usage: 74 hits, 0 reads, 3 dirtied\nWAL usage: 13 records, 2 full page images, 13853 bytes, 10860 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"pg_catalog.pg_propgraph_property\"",
+   "INFO:  \"pg_propgraph_property\": scanned 1 of 1 pages, containing 12 live rows and 0 dead rows; 12 rows in sample, 12 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.pg_catalog.pg_propgraph_property\"\navg read rate: 0.000 MB/s, avg write rate: 7.812 MB/s\nbuffer usage: 76 hits, 0 reads, 1 dirtied\nWAL usage: 16 records, 1 full page images, 4704 bytes, 1416 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"pg_catalog.pg_largeobject\"",
+   "INFO:  \"pg_largeobject\": scanned 0 of 0 pages, containing 0 live rows and 0 dead rows; 0 rows in sample, 0 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.pg_catalog.pg_largeobject\"\navg read rate: 0.000 MB/s, avg write rate: 0.000 MB/s\nbuffer usage: 33 hits, 0 reads, 0 dirtied\nWAL usage: 0 records, 0 full page images, 0 bytes, 0 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"information_schema.sql_features\"",
+   "INFO:  \"sql_features\": scanned 9 of 9 pages, containing 855 live rows and 0 dead rows; 855 rows in sample, 855 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.information_schema.sql_features\"\navg read rate: 42.969 MB/s, avg write rate: 0.000 MB/s\nbuffer usage: 181 hits, 11 reads, 0 dirtied\nWAL usage: 31 records, 0 full page images, 8556 bytes, 0 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"information_schema.sql_sizing\"",
+   "INFO:  \"sql_sizing\": scanned 1 of 1 pages, containing 23 live rows and 0 dead rows; 23 rows in sample, 23 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.information_schema.sql_sizing\"\navg read rate: 15.625 MB/s, avg write rate: 0.000 MB/s\nbuffer usage: 59 hits, 2 reads, 0 dirtied\nWAL usage: 7 records, 0 full page images, 1376 bytes, 0 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"information_schema.sql_implementation_info\"",
+   "INFO:  \"sql_implementation_info\": scanned 1 of 1 pages, containing 12 live rows and 0 dead rows; 12 rows in sample, 12 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.information_schema.sql_implementation_info\"\navg read rate: 15.625 MB/s, avg write rate: 0.000 MB/s\nbuffer usage: 44 hits, 2 reads, 0 dirtied\nWAL usage: 6 records, 0 full page images, 450 bytes, 0 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",
+   "INFO:  analyzing \"information_schema.sql_parts\"",
+   "INFO:  \"sql_parts\": scanned 1 of 1 pages, containing 11 live rows and 0 dead rows; 11 rows in sample, 11 estimated total rows",
+   "INFO:  finished analyzing table \"postgres.information_schema.sql_parts\"\navg read rate: 15.625 MB/s, avg write rate: 0.000 MB/s\nbuffer usage: 44 hits, 2 reads, 0 dirtied\nWAL usage: 6 records, 0 full page images, 454 bytes, 0 full page image bytes, 0 buffers full\nsystem usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s"
+  ]
+ },
+ "stats_before_analyze": [
+  {
+   "relname": "city",
+   "reltuples": 1343.0,
+   "relpages": 6,
+   "n_live_tup": 1343,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:08:17.723961+00:00"
+  },
+  {
+   "relname": "city_ispartof_country",
+   "reltuples": 1343.0,
+   "relpages": 9,
+   "n_live_tup": 1343,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:14:09.044351+00:00"
+  },
+  {
+   "relname": "comment",
+   "reltuples": 25651632.0,
+   "relpages": 113552,
+   "n_live_tup": 25651631,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:09:52.998622+00:00"
+  },
+  {
+   "relname": "comment_hascreator_person",
+   "reltuples": -1.0,
+   "relpages": 0,
+   "n_live_tup": 25652008,
+   "last_analyze": null,
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "comment_hastag_tag",
+   "reltuples": 31828988.0,
+   "relpages": 202800,
+   "n_live_tup": 31828987,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:11:22.520763+00:00"
+  },
+  {
+   "relname": "comment_replyof_comment",
+   "reltuples": 12984789.0,
+   "relpages": 82736,
+   "n_live_tup": 12984789,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:13:52.074193+00:00"
+  },
+  {
+   "relname": "comment_replyof_message",
+   "reltuples": -1.0,
+   "relpages": 0,
+   "n_live_tup": 25652008,
+   "last_analyze": null,
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "comment_replyof_post",
+   "reltuples": 12668344.0,
+   "relpages": 80752,
+   "n_live_tup": 12668344,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:13:54.196428+00:00"
+  },
+  {
+   "relname": "company",
+   "reltuples": 1575.0,
+   "relpages": 7,
+   "n_live_tup": 1575,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:08:17.720333+00:00"
+  },
+  {
+   "relname": "continent",
+   "reltuples": -1.0,
+   "relpages": 0,
+   "n_live_tup": 6,
+   "last_analyze": null,
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "country",
+   "reltuples": 111.0,
+   "relpages": 1,
+   "n_live_tup": 111,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:08:17.724309+00:00"
+  },
+  {
+   "relname": "forum",
+   "reltuples": 725661.0,
+   "relpages": 3216,
+   "n_live_tup": 725661,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:08:17.702183+00:00"
+  },
+  {
+   "relname": "forum_containerof_post",
+   "reltuples": -1.0,
+   "relpages": 0,
+   "n_live_tup": 9020368,
+   "last_analyze": null,
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "forum_hasmember_person",
+   "reltuples": 34787912.0,
+   "relpages": 221616,
+   "n_live_tup": 34787913,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:13:04.612928+00:00"
+  },
+  {
+   "relname": "message",
+   "reltuples": -1.0,
+   "relpages": 0,
+   "n_live_tup": 34672376,
+   "last_analyze": null,
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "message_hascreator_person",
+   "reltuples": -1.0,
+   "relpages": 0,
+   "n_live_tup": 34672376,
+   "last_analyze": null,
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "message_hastag_tag",
+   "reltuples": -1.0,
+   "relpages": 0,
+   "n_live_tup": 40146339,
+   "last_analyze": null,
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "person",
+   "reltuples": 73000.0,
+   "relpages": 336,
+   "n_live_tup": 73000,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:11:54.610891+00:00"
+  },
+  {
+   "relname": "person_hasinterest_tag",
+   "reltuples": 1709747.0,
+   "relpages": 10928,
+   "n_live_tup": 1709747,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:14:08.798588+00:00"
+  },
+  {
+   "relname": "person_islocatedin_city",
+   "reltuples": -1.0,
+   "relpages": 0,
+   "n_live_tup": 73000,
+   "last_analyze": null,
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "person_knows_person",
+   "reltuples": 2380850.0,
+   "relpages": 15216,
+   "n_live_tup": 2380850,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:14:08.948100+00:00"
+  },
+  {
+   "relname": "person_likes_comment",
+   "reltuples": 21055990.0,
+   "relpages": 134128,
+   "n_live_tup": 21055990,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:13:49.988779+00:00"
+  },
+  {
+   "relname": "person_likes_message",
+   "reltuples": -1.0,
+   "relpages": 0,
+   "n_live_tup": 30599157,
+   "last_analyze": null,
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "person_likes_post",
+   "reltuples": 9544082.0,
+   "relpages": 60848,
+   "n_live_tup": 9544082,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:13:57.979335+00:00"
+  },
+  {
+   "relname": "post",
+   "reltuples": 9018959.0,
+   "relpages": 39952,
+   "n_live_tup": 9018959,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:10:06.171961+00:00"
+  },
+  {
+   "relname": "post_hascreator_person",
+   "reltuples": -1.0,
+   "relpages": 0,
+   "n_live_tup": 9020368,
+   "last_analyze": null,
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "post_hastag_tag",
+   "reltuples": 8310979.0,
+   "relpages": 52976,
+   "n_live_tup": 8310979,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:11:54.403934+00:00"
+  },
+  {
+   "relname": "tag",
+   "reltuples": 16080.0,
+   "relpages": 72,
+   "n_live_tup": 16080,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:11:54.652190+00:00"
+  },
+  {
+   "relname": "tag_hastype_tagclass",
+   "reltuples": 16080.0,
+   "relpages": 103,
+   "n_live_tup": 16080,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:14:09.032314+00:00"
+  },
+  {
+   "relname": "tagclass",
+   "reltuples": 71.0,
+   "relpages": 1,
+   "n_live_tup": 71,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:11:54.652945+00:00"
+  },
+  {
+   "relname": "university",
+   "reltuples": 6380.0,
+   "relpages": 29,
+   "n_live_tup": 6380,
+   "last_analyze": null,
+   "last_autoanalyze": "2026-08-21T13:08:17.716185+00:00"
+  }
+ ],
+ "stats_after_analyze": [
+  {
+   "relname": "city",
+   "reltuples": 1343.0,
+   "relpages": 6,
+   "n_live_tup": 1343,
+   "last_analyze": "2026-08-21T13:14:27.015882+00:00",
+   "last_autoanalyze": "2026-08-21T13:08:17.723961+00:00"
+  },
+  {
+   "relname": "city_ispartof_country",
+   "reltuples": 1343.0,
+   "relpages": 9,
+   "n_live_tup": 1343,
+   "last_analyze": "2026-08-21T13:14:29.503437+00:00",
+   "last_autoanalyze": "2026-08-21T13:14:09.044351+00:00"
+  },
+  {
+   "relname": "comment",
+   "reltuples": 25653342.0,
+   "relpages": 113552,
+   "n_live_tup": 25653342,
+   "last_analyze": "2026-08-21T13:14:27.269027+00:00",
+   "last_autoanalyze": "2026-08-21T13:09:52.998622+00:00"
+  },
+  {
+   "relname": "comment_hascreator_person",
+   "reltuples": 25650672.0,
+   "relpages": 163440,
+   "n_live_tup": 25650672,
+   "last_analyze": "2026-08-21T13:14:29.502801+00:00",
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "comment_hastag_tag",
+   "reltuples": 31832172.0,
+   "relpages": 202800,
+   "n_live_tup": 31832171,
+   "last_analyze": "2026-08-21T13:14:27.736929+00:00",
+   "last_autoanalyze": "2026-08-21T13:11:22.520763+00:00"
+  },
+  {
+   "relname": "comment_replyof_comment",
+   "reltuples": 12984061.0,
+   "relpages": 82736,
+   "n_live_tup": 12984061,
+   "last_analyze": "2026-08-21T13:14:29.004886+00:00",
+   "last_autoanalyze": "2026-08-21T13:13:52.074193+00:00"
+  },
+  {
+   "relname": "comment_replyof_message",
+   "reltuples": 25652032.0,
+   "relpages": 138692,
+   "n_live_tup": 25652033,
+   "last_analyze": "2026-08-21T13:14:33.100501+00:00",
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "comment_replyof_post",
+   "reltuples": 12666654.0,
+   "relpages": 80752,
+   "n_live_tup": 12666654,
+   "last_analyze": "2026-08-21T13:14:29.187527+00:00",
+   "last_autoanalyze": "2026-08-21T13:13:54.196428+00:00"
+  },
+  {
+   "relname": "company",
+   "reltuples": 1575.0,
+   "relpages": 7,
+   "n_live_tup": 1575,
+   "last_analyze": "2026-08-21T13:14:27.013688+00:00",
+   "last_autoanalyze": "2026-08-21T13:08:17.720333+00:00"
+  },
+  {
+   "relname": "continent",
+   "reltuples": 6.0,
+   "relpages": 1,
+   "n_live_tup": 6,
+   "last_analyze": "2026-08-21T13:14:27.014869+00:00",
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "country",
+   "reltuples": 111.0,
+   "relpages": 1,
+   "n_live_tup": 111,
+   "last_analyze": "2026-08-21T13:14:27.015424+00:00",
+   "last_autoanalyze": "2026-08-21T13:08:17.724309+00:00"
+  },
+  {
+   "relname": "forum",
+   "reltuples": 725661.0,
+   "relpages": 3216,
+   "n_live_tup": 725661,
+   "last_analyze": "2026-08-21T13:14:27.050036+00:00",
+   "last_autoanalyze": "2026-08-21T13:08:17.702183+00:00"
+  },
+  {
+   "relname": "forum_containerof_post",
+   "reltuples": 9020592.0,
+   "relpages": 57456,
+   "n_live_tup": 9020592,
+   "last_analyze": "2026-08-21T13:14:30.421793+00:00",
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "forum_hasmember_person",
+   "reltuples": 34786752.0,
+   "relpages": 221616,
+   "n_live_tup": 34786753,
+   "last_analyze": "2026-08-21T13:14:28.189527+00:00",
+   "last_autoanalyze": "2026-08-21T13:13:04.612928+00:00"
+  },
+  {
+   "relname": "message",
+   "reltuples": 34677744.0,
+   "relpages": 153469,
+   "n_live_tup": 34677743,
+   "last_analyze": "2026-08-21T13:14:31.675032+00:00",
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "message_hascreator_person",
+   "reltuples": 34672424.0,
+   "relpages": 187481,
+   "n_live_tup": 34672424,
+   "last_analyze": "2026-08-21T13:14:33.319808+00:00",
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "message_hastag_tag",
+   "reltuples": 40146208.0,
+   "relpages": 217021,
+   "n_live_tup": 40146208,
+   "last_analyze": "2026-08-21T13:14:32.882938+00:00",
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "person",
+   "reltuples": 73000.0,
+   "relpages": 336,
+   "n_live_tup": 73000,
+   "last_analyze": "2026-08-21T13:14:27.477489+00:00",
+   "last_autoanalyze": "2026-08-21T13:11:54.610891+00:00"
+  },
+  {
+   "relname": "person_hasinterest_tag",
+   "reltuples": 1709747.0,
+   "relpages": 10928,
+   "n_live_tup": 1709747,
+   "last_analyze": "2026-08-21T13:14:28.264910+00:00",
+   "last_autoanalyze": "2026-08-21T13:14:08.798588+00:00"
+  },
+  {
+   "relname": "person_islocatedin_city",
+   "reltuples": 73000.0,
+   "relpages": 496,
+   "n_live_tup": 73000,
+   "last_analyze": "2026-08-21T13:14:29.701216+00:00",
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "person_knows_person",
+   "reltuples": 2380850.0,
+   "relpages": 15216,
+   "n_live_tup": 2380850,
+   "last_analyze": "2026-08-21T13:14:28.801753+00:00",
+   "last_autoanalyze": "2026-08-21T13:14:08.948100+00:00"
+  },
+  {
+   "relname": "person_likes_comment",
+   "reltuples": 21054586.0,
+   "relpages": 134128,
+   "n_live_tup": 21054586,
+   "last_analyze": "2026-08-21T13:14:28.486422+00:00",
+   "last_autoanalyze": "2026-08-21T13:13:49.988779+00:00"
+  },
+  {
+   "relname": "person_likes_message",
+   "reltuples": 30598380.0,
+   "relpages": 165403,
+   "n_live_tup": 30598381,
+   "last_analyze": "2026-08-21T13:14:33.531948+00:00",
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "person_likes_post",
+   "reltuples": 9544719.0,
+   "relpages": 60848,
+   "n_live_tup": 9544719,
+   "last_analyze": "2026-08-21T13:14:28.705575+00:00",
+   "last_autoanalyze": "2026-08-21T13:13:57.979335+00:00"
+  },
+  {
+   "relname": "post",
+   "reltuples": 9019220.0,
+   "relpages": 39952,
+   "n_live_tup": 9019220,
+   "last_analyze": "2026-08-21T13:14:27.460706+00:00",
+   "last_autoanalyze": "2026-08-21T13:10:06.171961+00:00"
+  },
+  {
+   "relname": "post_hascreator_person",
+   "reltuples": 9020592.0,
+   "relpages": 57456,
+   "n_live_tup": 9020592,
+   "last_analyze": "2026-08-21T13:14:29.670179+00:00",
+   "last_autoanalyze": null
+  },
+  {
+   "relname": "post_hastag_tag",
+   "reltuples": 8312643.0,
+   "relpages": 52976,
+   "n_live_tup": 8312643,
+   "last_analyze": "2026-08-21T13:14:27.948920+00:00",
+   "last_autoanalyze": "2026-08-21T13:11:54.403934+00:00"
+  },
+  {
+   "relname": "tag",
+   "reltuples": 16080.0,
+   "relpages": 72,
+   "n_live_tup": 16080,
+   "last_analyze": "2026-08-21T13:14:27.017324+00:00",
+   "last_autoanalyze": "2026-08-21T13:11:54.652190+00:00"
+  },
+  {
+   "relname": "tag_hastype_tagclass",
+   "reltuples": 16080.0,
+   "relpages": 103,
+   "n_live_tup": 16080,
+   "last_analyze": "2026-08-21T13:14:29.507349+00:00",
+   "last_autoanalyze": "2026-08-21T13:14:09.032314+00:00"
+  },
+  {
+   "relname": "tagclass",
+   "reltuples": 71.0,
+   "relpages": 1,
+   "n_live_tup": 71,
+   "last_analyze": "2026-08-21T13:14:27.017598+00:00",
+   "last_autoanalyze": "2026-08-21T13:11:54.652945+00:00"
+  },
+  {
+   "relname": "university",
+   "reltuples": 6380.0,
+   "relpages": 29,
+   "n_live_tup": 6380,
+   "last_analyze": "2026-08-21T13:14:27.014558+00:00",
+   "last_autoanalyze": "2026-08-21T13:08:17.716185+00:00"
+  }
+ ]
+}

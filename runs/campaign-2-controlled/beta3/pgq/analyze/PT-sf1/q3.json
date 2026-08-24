@@ -1,0 +1,743 @@
+{
+ "query": "q3.sql",
+ "executed": false,
+ "error": null,
+ "plan": [
+  {
+   "Plan": {
+    "Node Type": "Aggregate",
+    "Strategy": "Plain",
+    "Partial Mode": "Simple",
+    "Parallel Aware": false,
+    "Async Capable": false,
+    "Startup Cost": 336949065972.84,
+    "Total Cost": 336949065972.85,
+    "Plan Rows": 1,
+    "Plan Width": 8,
+    "Disabled": false,
+    "Output": [
+     "count(*)"
+    ],
+    "Plans": [
+     {
+      "Node Type": "Hash Join",
+      "Parent Relationship": "InitPlan",
+      "Subplan Name": "CTE pc",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Join Type": "Inner",
+      "Startup Cost": 413.63,
+      "Total Cost": 774.76,
+      "Plan Rows": 11000,
+      "Plan Width": 16,
+      "Disabled": false,
+      "Output": [
+       "person.id",
+       "country.id"
+      ],
+      "Inner Unique": true,
+      "Hash Cond": "(person_islocatedin_city.personid = person.id)",
+      "Plans": [
+       {
+        "Node Type": "Hash Join",
+        "Parent Relationship": "Outer",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Join Type": "Inner",
+        "Startup Cost": 86.13,
+        "Total Cost": 418.38,
+        "Plan Rows": 11000,
+        "Plan Width": 16,
+        "Disabled": false,
+        "Output": [
+         "person_islocatedin_city.personid",
+         "country.id"
+        ],
+        "Inner Unique": false,
+        "Hash Cond": "(person_islocatedin_city.cityid = city.id)",
+        "Plans": [
+         {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "person_islocatedin_city",
+          "Schema": "public",
+          "Alias": "person_islocatedin_city",
+          "Startup Cost": 0.0,
+          "Total Cost": 181.0,
+          "Plan Rows": 11000,
+          "Plan Width": 16,
+          "Disabled": false,
+          "Output": [
+           "person_islocatedin_city.personid",
+           "person_islocatedin_city.cityid",
+           "person_islocatedin_city.id"
+          ]
+         },
+         {
+          "Node Type": "Hash",
+          "Parent Relationship": "Inner",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 69.34,
+          "Total Cost": 69.34,
+          "Plan Rows": 1343,
+          "Plan Width": 24,
+          "Disabled": false,
+          "Output": [
+           "city.id",
+           "city_ispartof_country.cityid",
+           "country.id"
+          ],
+          "Plans": [
+           {
+            "Node Type": "Hash Join",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Join Type": "Inner",
+            "Startup Cost": 39.72,
+            "Total Cost": 69.34,
+            "Plan Rows": 1343,
+            "Plan Width": 24,
+            "Disabled": false,
+            "Output": [
+             "city.id",
+             "city_ispartof_country.cityid",
+             "country.id"
+            ],
+            "Inner Unique": true,
+            "Hash Cond": "(city_ispartof_country.countryid = country.id)",
+            "Plans": [
+             {
+              "Node Type": "Hash Join",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 36.22,
+              "Total Cost": 62.18,
+              "Plan Rows": 1343,
+              "Plan Width": 24,
+              "Disabled": false,
+              "Output": [
+               "city.id",
+               "city_ispartof_country.cityid",
+               "city_ispartof_country.countryid"
+              ],
+              "Inner Unique": true,
+              "Hash Cond": "(city_ispartof_country.cityid = city.id)",
+              "Plans": [
+               {
+                "Node Type": "Seq Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "city_ispartof_country",
+                "Schema": "public",
+                "Alias": "city_ispartof_country",
+                "Startup Cost": 0.0,
+                "Total Cost": 22.43,
+                "Plan Rows": 1343,
+                "Plan Width": 16,
+                "Disabled": false,
+                "Output": [
+                 "city_ispartof_country.cityid",
+                 "city_ispartof_country.countryid",
+                 "city_ispartof_country.id"
+                ]
+               },
+               {
+                "Node Type": "Hash",
+                "Parent Relationship": "Inner",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 19.43,
+                "Total Cost": 19.43,
+                "Plan Rows": 1343,
+                "Plan Width": 8,
+                "Disabled": false,
+                "Output": [
+                 "city.id"
+                ],
+                "Plans": [
+                 {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "city",
+                  "Schema": "public",
+                  "Alias": "city",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 19.43,
+                  "Plan Rows": 1343,
+                  "Plan Width": 8,
+                  "Disabled": false,
+                  "Output": [
+                   "city.id"
+                  ]
+                 }
+                ]
+               }
+              ]
+             },
+             {
+              "Node Type": "Hash",
+              "Parent Relationship": "Inner",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 2.11,
+              "Total Cost": 2.11,
+              "Plan Rows": 111,
+              "Plan Width": 8,
+              "Disabled": false,
+              "Output": [
+               "country.id"
+              ],
+              "Plans": [
+               {
+                "Node Type": "Seq Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "country",
+                "Schema": "public",
+                "Alias": "country",
+                "Startup Cost": 0.0,
+                "Total Cost": 2.11,
+                "Plan Rows": 111,
+                "Plan Width": 8,
+                "Disabled": false,
+                "Output": [
+                 "country.id"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "Node Type": "Hash",
+        "Parent Relationship": "Inner",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 190.0,
+        "Total Cost": 190.0,
+        "Plan Rows": 11000,
+        "Plan Width": 8,
+        "Disabled": false,
+        "Output": [
+         "person.id"
+        ],
+        "Plans": [
+         {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "person",
+          "Schema": "public",
+          "Alias": "person",
+          "Startup Cost": 0.0,
+          "Total Cost": 190.0,
+          "Plan Rows": 11000,
+          "Plan Width": 8,
+          "Disabled": false,
+          "Output": [
+           "person.id"
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Node Type": "Gather",
+      "Parent Relationship": "InitPlan",
+      "Subplan Name": "CTE knows",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 1012.17,
+      "Total Cost": 336949031356.29,
+      "Plan Rows": 452586,
+      "Plan Width": 16,
+      "Disabled": false,
+      "Output": [
+       "person_1.id",
+       "person_2.id"
+      ],
+      "Workers Planned": 1,
+      "Single Copy": false,
+      "Plans": [
+       {
+        "Node Type": "Nested Loop",
+        "Parent Relationship": "Outer",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Join Type": "Inner",
+        "Startup Cost": 12.17,
+        "Total Cost": 336948985097.69,
+        "Plan Rows": 266227,
+        "Plan Width": 16,
+        "Disabled": false,
+        "Output": [
+         "person_1.id",
+         "person_2.id"
+        ],
+        "Inner Unique": false,
+        "Join Filter": "(((person_1.id = person_knows_person.person1id) AND (person_2.id = person_knows_person.person2id)) OR ((person_1.id = person_knows_person.person2id) AND (person_2.id = person_knows_person.person1id)))",
+        "Plans": [
+         {
+          "Node Type": "Nested Loop",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Join Type": "Inner",
+          "Startup Cost": 6.09,
+          "Total Cost": 15990627.64,
+          "Plan Rows": 1464248824,
+          "Plan Width": 24,
+          "Disabled": false,
+          "Output": [
+           "person_1.id",
+           "person_knows_person.person1id",
+           "person_knows_person.person2id"
+          ],
+          "Inner Unique": false,
+          "Plans": [
+           {
+            "Node Type": "Seq Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": true,
+            "Async Capable": false,
+            "Relation Name": "person_knows_person",
+            "Schema": "public",
+            "Alias": "person_knows_person",
+            "Startup Cost": 0.0,
+            "Total Cost": 2787.14,
+            "Plan Rows": 133114,
+            "Plan Width": 16,
+            "Disabled": false,
+            "Output": [
+             "person_knows_person.person1id",
+             "person_knows_person.person2id",
+             "person_knows_person.id"
+            ]
+           },
+           {
+            "Node Type": "Bitmap Heap Scan",
+            "Parent Relationship": "Inner",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Relation Name": "person",
+            "Schema": "public",
+            "Alias": "person_1",
+            "Startup Cost": 6.09,
+            "Total Cost": 10.11,
+            "Plan Rows": 11000,
+            "Plan Width": 8,
+            "Disabled": false,
+            "Output": [
+             "person_1.id"
+            ],
+            "Recheck Cond": "((person_1.id = person_knows_person.person1id) OR (person_1.id = person_knows_person.person2id))",
+            "Plans": [
+             {
+              "Node Type": "BitmapOr",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 6.09,
+              "Total Cost": 6.09,
+              "Plan Rows": 2,
+              "Plan Width": 0,
+              "Disabled": false,
+              "Plans": [
+               {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Member",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "person_pkey",
+                "Startup Cost": 0.0,
+                "Total Cost": 0.29,
+                "Plan Rows": 1,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "(person_1.id = person_knows_person.person1id)"
+               },
+               {
+                "Node Type": "Bitmap Index Scan",
+                "Parent Relationship": "Member",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Index Name": "person_pkey",
+                "Startup Cost": 0.0,
+                "Total Cost": 0.29,
+                "Plan Rows": 1,
+                "Plan Width": 0,
+                "Disabled": false,
+                "Index Cond": "(person_1.id = person_knows_person.person2id)"
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "Node Type": "Bitmap Heap Scan",
+          "Parent Relationship": "Inner",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "person",
+          "Schema": "public",
+          "Alias": "person_2",
+          "Startup Cost": 6.09,
+          "Total Cost": 10.11,
+          "Plan Rows": 11000,
+          "Plan Width": 8,
+          "Disabled": false,
+          "Output": [
+           "person_2.id"
+          ],
+          "Recheck Cond": "((person_2.id = person_knows_person.person2id) OR (person_2.id = person_knows_person.person1id))",
+          "Plans": [
+           {
+            "Node Type": "BitmapOr",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 6.09,
+            "Total Cost": 6.09,
+            "Plan Rows": 2,
+            "Plan Width": 0,
+            "Disabled": false,
+            "Plans": [
+             {
+              "Node Type": "Bitmap Index Scan",
+              "Parent Relationship": "Member",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Index Name": "person_pkey",
+              "Startup Cost": 0.0,
+              "Total Cost": 0.29,
+              "Plan Rows": 1,
+              "Plan Width": 0,
+              "Disabled": false,
+              "Index Cond": "(person_2.id = person_knows_person.person2id)"
+             },
+             {
+              "Node Type": "Bitmap Index Scan",
+              "Parent Relationship": "Member",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Index Name": "person_pkey",
+              "Startup Cost": 0.0,
+              "Total Cost": 0.29,
+              "Plan Rows": 1,
+              "Plan Width": 0,
+              "Disabled": false,
+              "Index Cond": "(person_2.id = person_knows_person.person1id)"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Node Type": "Nested Loop",
+      "Parent Relationship": "Outer",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Join Type": "Inner",
+      "Startup Cost": 12041.44,
+      "Total Cost": 33841.79,
+      "Plan Rows": 1,
+      "Plan Width": 0,
+      "Disabled": false,
+      "Inner Unique": false,
+      "Join Filter": "((pc1.cid = pc2.cid) AND (pc1.pid = k31.p2) AND (pc2.pid = k12.p2))",
+      "Plans": [
+       {
+        "Node Type": "Hash Join",
+        "Parent Relationship": "Outer",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Join Type": "Inner",
+        "Startup Cost": 11683.94,
+        "Total Cost": 22432.87,
+        "Plan Rows": 1,
+        "Plan Width": 40,
+        "Disabled": false,
+        "Output": [
+         "pc2.cid",
+         "pc2.pid",
+         "pc3.cid",
+         "k23.p1",
+         "k31.p2"
+        ],
+        "Inner Unique": false,
+        "Hash Cond": "(k31.p1 = pc3.pid)",
+        "Plans": [
+         {
+          "Node Type": "CTE Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "CTE Name": "knows",
+          "Alias": "k31",
+          "Startup Cost": 0.0,
+          "Total Cost": 9051.72,
+          "Plan Rows": 452586,
+          "Plan Width": 16,
+          "Disabled": false,
+          "Output": [
+           "k31.p1",
+           "k31.p2"
+          ]
+         },
+         {
+          "Node Type": "Hash",
+          "Parent Relationship": "Inner",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 11683.93,
+          "Total Cost": 11683.93,
+          "Plan Rows": 1,
+          "Plan Width": 48,
+          "Disabled": false,
+          "Output": [
+           "pc2.cid",
+           "pc2.pid",
+           "pc3.cid",
+           "pc3.pid",
+           "k23.p1",
+           "k23.p2"
+          ],
+          "Plans": [
+           {
+            "Node Type": "Hash Join",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Join Type": "Inner",
+            "Startup Cost": 742.5,
+            "Total Cost": 11683.93,
+            "Plan Rows": 1,
+            "Plan Width": 48,
+            "Disabled": false,
+            "Output": [
+             "pc2.cid",
+             "pc2.pid",
+             "pc3.cid",
+             "pc3.pid",
+             "k23.p1",
+             "k23.p2"
+            ],
+            "Inner Unique": false,
+            "Hash Cond": "((pc2.cid = pc3.cid) AND (k23.p2 = pc3.pid))",
+            "Plans": [
+             {
+              "Node Type": "Hash Join",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Join Type": "Inner",
+              "Startup Cost": 357.5,
+              "Total Cost": 11216.42,
+              "Plan Rows": 11000,
+              "Plan Width": 32,
+              "Disabled": false,
+              "Output": [
+               "pc2.cid",
+               "pc2.pid",
+               "k23.p1",
+               "k23.p2"
+              ],
+              "Inner Unique": false,
+              "Hash Cond": "(k23.p1 = pc2.pid)",
+              "Plans": [
+               {
+                "Node Type": "CTE Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "CTE Name": "knows",
+                "Alias": "k23",
+                "Startup Cost": 0.0,
+                "Total Cost": 9051.72,
+                "Plan Rows": 452586,
+                "Plan Width": 16,
+                "Disabled": false,
+                "Output": [
+                 "k23.p1",
+                 "k23.p2"
+                ]
+               },
+               {
+                "Node Type": "Hash",
+                "Parent Relationship": "Inner",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 220.0,
+                "Total Cost": 220.0,
+                "Plan Rows": 11000,
+                "Plan Width": 16,
+                "Disabled": false,
+                "Output": [
+                 "pc2.cid",
+                 "pc2.pid"
+                ],
+                "Plans": [
+                 {
+                  "Node Type": "CTE Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "CTE Name": "pc",
+                  "Alias": "pc2",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 220.0,
+                  "Plan Rows": 11000,
+                  "Plan Width": 16,
+                  "Disabled": false,
+                  "Output": [
+                   "pc2.cid",
+                   "pc2.pid"
+                  ]
+                 }
+                ]
+               }
+              ]
+             },
+             {
+              "Node Type": "Hash",
+              "Parent Relationship": "Inner",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 220.0,
+              "Total Cost": 220.0,
+              "Plan Rows": 11000,
+              "Plan Width": 16,
+              "Disabled": false,
+              "Output": [
+               "pc3.cid",
+               "pc3.pid"
+              ],
+              "Plans": [
+               {
+                "Node Type": "CTE Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "CTE Name": "pc",
+                "Alias": "pc3",
+                "Startup Cost": 0.0,
+                "Total Cost": 220.0,
+                "Plan Rows": 11000,
+                "Plan Width": 16,
+                "Disabled": false,
+                "Output": [
+                 "pc3.cid",
+                 "pc3.pid"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "Node Type": "Hash Join",
+        "Parent Relationship": "Inner",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Join Type": "Inner",
+        "Startup Cost": 357.5,
+        "Total Cost": 11216.42,
+        "Plan Rows": 11000,
+        "Plan Width": 32,
+        "Disabled": false,
+        "Output": [
+         "pc1.cid",
+         "pc1.pid",
+         "k12.p1",
+         "k12.p2"
+        ],
+        "Inner Unique": false,
+        "Hash Cond": "(k12.p1 = pc1.pid)",
+        "Plans": [
+         {
+          "Node Type": "CTE Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "CTE Name": "knows",
+          "Alias": "k12",
+          "Startup Cost": 0.0,
+          "Total Cost": 9051.72,
+          "Plan Rows": 452586,
+          "Plan Width": 16,
+          "Disabled": false,
+          "Output": [
+           "k12.p1",
+           "k12.p2"
+          ]
+         },
+         {
+          "Node Type": "Hash",
+          "Parent Relationship": "Inner",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 220.0,
+          "Total Cost": 220.0,
+          "Plan Rows": 11000,
+          "Plan Width": 16,
+          "Disabled": false,
+          "Output": [
+           "pc1.cid",
+           "pc1.pid"
+          ],
+          "Plans": [
+           {
+            "Node Type": "CTE Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "CTE Name": "pc",
+            "Alias": "pc1",
+            "Startup Cost": 0.0,
+            "Total Cost": 220.0,
+            "Plan Rows": 11000,
+            "Plan Width": 16,
+            "Disabled": false,
+            "Output": [
+             "pc1.cid",
+             "pc1.pid"
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "Settings": {}
+  }
+ ]
+}
