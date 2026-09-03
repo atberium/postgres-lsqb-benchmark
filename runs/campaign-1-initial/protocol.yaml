@@ -28,13 +28,13 @@ exceptions:
     approach: relational
     note: not measured; the cross-version comparison covers SQL/PGQ only
 
-instances:                     # flavour varies with scale factor, a known confound
+instances:                     # SF 0.1 apart, one flavour throughout
   sf_0.1:  {flavour: 2cpu-16ram,   vcpu: 2,  ram_gib: 16}
   sf_0.3:  {flavour: 8cpu-32ram,   vcpu: 8,  ram_gib: 32}
-  sf_1:    {flavour: 8cpu-128ram,  vcpu: 8,  ram_gib: 128}
-  sf_3:    {flavour: 8cpu-128ram,  vcpu: 8,  ram_gib: 128}
-  sf_10:   {flavour: 8cpu-128ram,  vcpu: 8,  ram_gib: 128}
-  sf_30:   {flavour: 8cpu-128ram,  vcpu: 8,  ram_gib: 128}
+  sf_1:    {flavour: 8cpu-32ram,   vcpu: 8,  ram_gib: 32}
+  sf_3:    {flavour: 8cpu-32ram,   vcpu: 8,  ram_gib: 32}
+  sf_10:   {flavour: 8cpu-32ram,   vcpu: 8,  ram_gib: 32}
+  sf_30:   {flavour: 8cpu-32ram,   vcpu: 8,  ram_gib: 32}
   sf_100:  {flavour: 20cpu-320ram, vcpu: 20, ram_gib: 320}
 
 plans:

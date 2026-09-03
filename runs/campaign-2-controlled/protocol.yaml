@@ -29,8 +29,8 @@ coverage:
   scale_factors: [0.1, 0.3, 1, 3, 10, 30]
   sf_100: not measured; see campaign 1
 
-instances:
-  all: {flavour: 8cpu-128ram, vcpu: 8, ram_gib: 128}   # constant, unlike campaign 1
+instances:                     # constant across every scale factor measured
+  all: {flavour: 8cpu-32ram, vcpu: 8, ram_gib: 32}
 
 contents:
   results: "{version}/{approach}/{strategy}-sf{n}{projection}.txt"
