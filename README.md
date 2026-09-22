@@ -1,14 +1,29 @@
 # LSQB on PostgreSQL 19: SQL/PGQ against explicit joins
 
-This repository holds the measurements behind an evaluation of **SQL/PGQ in PostgreSQL 19**, run on
-[LSQB](https://github.com/ldbc/lsqb), the Labelled Subgraph Query Benchmark of the Linked Data Benchmark
-Council. It contains the harness, the query texts, the schema definitions, and every raw result and query
-plan the report cites, so that any figure quoted can be traced back to the file it came from.
+## 📄 The full report: [`paper.pdf`](paper.pdf)
+
+**[`paper.pdf`](paper.pdf) is the study itself** — 71 pages covering what SQL/PGQ in PostgreSQL 19 could
+and could not execute on the LSQB benchmark, how fast, and why. Every figure in it is traceable to a file
+in this repository. Read that first; this README describes the data behind it.
+
+> **Status of the feature.** SQL/PGQ was reverted from PostgreSQL after beta 3 and **will not ship in
+> version 19**. Beta 3 is the code measured here: `src/backend/rewrite/rewriteGraphTable.c` exists at tag
+> `REL_19_BETA3` and not on `master`. Section 6.5 of the report separates the findings that belonged to
+> that implementation from those that belong to PostgreSQL's planner and executor, and so still apply to
+> whatever arrives next.
+
+---
+
+This repository holds the measurements behind the report: the harness, the query texts, the schema
+definitions, and every raw result and query plan it cites, so that any figure quoted can be traced back to
+the file it came from. The benchmark is [LSQB](https://github.com/ldbc/lsqb), the Labelled Subgraph Query
+Benchmark of the Linked Data Benchmark Council.
 
 The question the measurements address is narrow and practical. Matching a graph pattern in SQL takes one
-`JOIN` per edge, written out explicitly, which is much of why graph workloads get moved to a separate
-engine. SQL/PGQ lets the pattern be written instead. PostgreSQL 19 is the first release to implement it,
-and this is an attempt to find out what that implementation can and cannot do yet.
+`JOIN` per edge, written out explicitly, and grows with the pattern: nine edges mean a nine-way join
+written out in full. SQL/PGQ lets the pattern be written instead. The PostgreSQL 19 betas were the first
+place it appeared in PostgreSQL — other implementations exist, DuckPGQ over DuckDB among them — and this
+is an attempt to find out what that implementation could and could not do.
 
 ## What is measured
 
@@ -18,10 +33,13 @@ Nine LSQB queries, expressed two ways over the same data:
 - **the relational approach** — each query written with explicit `JOIN` operations, using LSQB's own
   reference implementations unchanged.
 
-Both are run at six scale factors, SF 0.1 to SF 30, under three ways of supplying the derived relations
-that the LSQB schema needs but the source data does not provide: plain tables (**PT**), non-materialised
-views (**RV**), and materialised views (**MV**). SF 100 was measured for SQL/PGQ only, in the first
-campaign.
+Both are run at six scale factors, SF 0.1 to SF 30, under three ways of supplying the derived relations that
+the LSQB schema needs but the source data does not provide: plain tables (**PT**), non-materialised views
+(**RV**), and materialised views (**MV**). That is 9 × 6 × 3 = 162 cells per approach, each run five times.
+
+SF 100 sits outside that series: it was measured for SQL/PGQ only, in the first campaign, on a larger
+instance and a longer timeout. It is not a seventh point on the same axis, and the report excludes it from
+every cross-approach figure.
 
 Each configuration records query latency, peak resident memory, on-disk footprint, load time, the returned
 count for every query, and the query plan.
@@ -74,7 +92,7 @@ instance flavours, and the exceptions that apply to particular versions or scale
 | Query order | filesystem, varies between configurations | sorted, identical everywhere |
 | Per-repetition times | not recorded | recorded, timeouts marked |
 | Plans | captured separately, in a different statistics state | captured per query, in the same state as the timings |
-| Instance flavour | varies with scale factor | constant |
+| Instance flavour | `2cpu-16ram` at SF 0.1, `8cpu-32ram` from SF 0.3 up, `20cpu-320ram` at SF 100 | `8cpu-32ram` at every scale factor |
 | SF 100 | measured, SQL/PGQ only | not measured |
 
 Campaign 2 is the one the report draws on. Campaign 1 is kept for two reasons: its SF 100 rows exist
@@ -150,9 +168,16 @@ best available expression of these patterns.
 The server ran on packaged defaults throughout, including `shared_buffers` at 128 MB and `work_mem` at
 4 MB. No run was made under tuned configuration.
 
+Two further limits are worth knowing before quoting a number. The PT-versus-MV comparison mixes
+materialisation with indexing and element-key declaration, so it is a null result on these definitions
+rather than a finding that the two are equivalent. And the association between `knows` edges and coverage
+is a separation over nine queries, not a complexity criterion.
+
 ## References
 
 - Mhedhbi, Lissandrini, Kuiper, Waudby, Szárnyas. *LSQB: a large-scale subgraph query benchmark.*
   GRADES-NDA '21. [10.1145/3461837.3464516](https://doi.org/10.1145/3461837.3464516)
 - LSQB: [github.com/ldbc/lsqb](https://github.com/ldbc/lsqb)
 - ISO/IEC 9075-16:2023, *SQL — Part 16: Property Graph Queries (SQL/PGQ)*
+- "PostgreSQL to pull property graphs from v19 after design flaws", freenode.net, September 2026:
+  [the revert discussion](https://freenode.net/article/postgresql-to-pull-property-graphs-from-v19-after-design-flaws)
