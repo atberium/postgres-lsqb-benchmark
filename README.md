@@ -6,6 +6,8 @@
 and could not execute on the LSQB benchmark, how fast, and why. Every figure in it is traceable to a file
 in this repository. Read that first; this README describes the data behind it.
 
+The work was carried out by Dmitriy Eremeev, Ivan Khramkov and Aleksey Teplov at T-Technologies, R&D Center.
+
 > **Status of the feature.** SQL/PGQ was reverted from PostgreSQL after beta 3 and **will not ship in
 > version 19**. Beta 3 is the code measured here: `src/backend/rewrite/rewriteGraphTable.c` exists at tag
 > `REL_19_BETA3` and not on `master`. Section 6.5 of the report separates the findings that belonged to
